@@ -131,7 +131,7 @@ private fun SignInCreateAccount(
         )
         val onSubmit = {
             if (emailState.isValid) {
-                navActions.goToProductList()
+                navActions.onBoardingCompleted()
                 //onEvent(WelcomeEvent.SignInSignUp(emailState.text))
             } else {
                 emailState.enableShowErrors()
@@ -151,7 +151,7 @@ private fun SignInCreateAccount(
             )
         }
         OrSignInAsGuest(
-            onSignedInAsGuest = { navActions.goToProductList() },
+            onSignedInAsGuest = { navActions.onBoardingCompleted() },
             modifier = Modifier.fillMaxWidth()
         )
     }
@@ -160,7 +160,7 @@ private fun SignInCreateAccount(
 @DevicePreview
 @Composable
 fun WelcomeScreenPreview() {
-    StartingPointTheme() {
-        WelcomeScreen(rememberNavController().navActions())
+    StartingPointTheme {
+        WelcomeScreen(rememberNavController().navActions {})
     }
 }

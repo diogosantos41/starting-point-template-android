@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint
+package com.dscoding.startingpoint.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

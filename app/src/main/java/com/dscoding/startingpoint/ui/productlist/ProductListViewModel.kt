@@ -2,6 +2,7 @@ package com.dscoding.startingpoint.ui.productlist
 
 import androidx.lifecycle.viewModelScope
 import com.dscoding.startingpoint.common.Result
+import com.dscoding.startingpoint.domain.model.Product
 import com.dscoding.startingpoint.domain.repository.Repository
 import com.dscoding.startingpoint.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,6 +11,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+data class ProductListState(
+    val products: List<Product>,
+    val isLoading: Boolean
+)
+
 @HiltViewModel
 class ProductListViewModel @Inject constructor(private val repository: Repository) :
     BaseViewModel<ProductListState>() {
@@ -17,7 +23,10 @@ class ProductListViewModel @Inject constructor(private val repository: Repositor
     private var getProductsJob: Job? = null
 
     override fun initialState(): ProductListState {
-        return ProductListState(products = emptyList(), isLoading = true)
+        return ProductListState(
+            products = emptyList(),
+            isLoading = true
+        )
     }
 
     init {
