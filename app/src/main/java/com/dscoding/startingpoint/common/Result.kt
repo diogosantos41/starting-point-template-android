@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.utils
+package com.dscoding.startingpoint.common
 
 sealed class Result<T>(val data: T? = null, val error: Throwable? = null) {
     class Success<T>(data: T) : Result<T>(data)

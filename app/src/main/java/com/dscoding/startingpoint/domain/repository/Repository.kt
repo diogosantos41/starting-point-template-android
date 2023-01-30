@@ -1,7 +1,7 @@
 package com.dscoding.startingpoint.domain.repository
 
 import com.dscoding.startingpoint.domain.model.Product
-import com.dscoding.startingpoint.utils.Result
+import com.dscoding.startingpoint.common.Result
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {

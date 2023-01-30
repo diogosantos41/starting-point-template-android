@@ -1,6 +1,6 @@
 package com.dscoding.startingpoint.data.utils
 
-import com.dscoding.startingpoint.utils.Result
+import com.dscoding.startingpoint.common.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first

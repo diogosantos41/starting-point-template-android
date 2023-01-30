@@ -41,7 +41,7 @@ fun ProductListScreen(
     viewModel: ProductListViewModel = hiltViewModel()
 
 ) {
-    val state = viewModel.state.value
+    val state = viewModel.uiState.value
 
     LazyColumn(
         modifier = Modifier
