@@ -1,9 +1,8 @@
 package com.dscoding.startingpoint.ui.main
 
 import androidx.lifecycle.viewModelScope
-import com.dscoding.startingpoint.domain.repository.Repository
 import com.dscoding.startingpoint.ui.base.BaseViewModel
-import com.dscoding.startingpoint.ui.navigation.TOP_LEVEL_DESTINATIONS
+import com.dscoding.startingpoint.ui.navigation.ListTopLevelDestination
 import com.dscoding.startingpoint.ui.navigation.TopLevelDestination
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,7 +29,7 @@ class MainViewModel @Inject constructor() :
 
     override fun initialState(): MainUIState {
         return MainUIState(
-            currentTopLevelDestination = TOP_LEVEL_DESTINATIONS[0],
+            currentTopLevelDestination = ListTopLevelDestination,
             showLoading = false,
             showBottomBar = false
         )
@@ -49,14 +48,8 @@ class MainViewModel @Inject constructor() :
     }
 
     fun onBoardingCompleted() {
-        navigateTo(TOP_LEVEL_DESTINATIONS[0])
+        navigateTo(ListTopLevelDestination)
     }
 
-    fun showLoading(showLoading: Boolean) {
-        updateState(
-            uiState.value.copy(
-                showLoading = showLoading
-            )
-        )
-    }
+
 }

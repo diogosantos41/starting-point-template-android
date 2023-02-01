@@ -27,29 +27,37 @@ data class TopLevelDestination(
     val unselectedIcon: ImageVector,
 )
 
-val TOP_LEVEL_DESTINATIONS = listOf(
-    TopLevelDestination(
-        route = Destination.ProductListScreen.route,
-        title = "List",
-        selectedIcon = Icons.Default.List,
-        unselectedIcon = Icons.Default.List,
-    ),
-    TopLevelDestination(
-        route = Destination.ComponentsScreen.route,
-        title = "Components",
-        selectedIcon = Icons.Default.Info,
-        unselectedIcon = Icons.Default.Info,
-    ),
-    TopLevelDestination(
-        route = Destination.FormScreen.route,
-        title = "Form",
-        selectedIcon = Icons.Outlined.Edit,
-        unselectedIcon = Icons.Outlined.Edit,
-    ),
-    TopLevelDestination(
-        route = Destination.SettingsScreen.route,
-        title = "Settings",
-        selectedIcon = Icons.Default.Settings,
-        unselectedIcon = Icons.Default.Settings,
-    )
+val ListTopLevelDestination = TopLevelDestination(
+    route = Destination.ProductListScreen.route,
+    title = "List",
+    selectedIcon = Icons.Default.List,
+    unselectedIcon = Icons.Default.List,
+)
+
+val ComponentsTopLevelDestination = TopLevelDestination(
+    route = Destination.ComponentsScreen.route,
+    title = "Components",
+    selectedIcon = Icons.Default.Info,
+    unselectedIcon = Icons.Default.Info,
+)
+
+val FormTopLevelDestination = TopLevelDestination(
+    route = Destination.FormScreen.route,
+    title = "Form",
+    selectedIcon = Icons.Outlined.Edit,
+    unselectedIcon = Icons.Outlined.Edit,
+)
+
+val SettingsTopLevelDestination = TopLevelDestination(
+    route = Destination.SettingsScreen.route,
+    title = "Settings",
+    selectedIcon = Icons.Default.Settings,
+    unselectedIcon = Icons.Default.Settings,
+)
+
+val TopLevelDestinations = listOf(
+    ListTopLevelDestination,
+    ComponentsTopLevelDestination,
+    FormTopLevelDestination,
+    SettingsTopLevelDestination
 )

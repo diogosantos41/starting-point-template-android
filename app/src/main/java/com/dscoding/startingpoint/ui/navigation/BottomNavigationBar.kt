@@ -6,9 +6,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.add
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -37,7 +41,7 @@ fun BottomNavigationBar(
         verticalAlignment = CenterVertically
     ) {
 
-        TOP_LEVEL_DESTINATIONS.forEach { destination ->
+        TopLevelDestinations.forEach { destination ->
             BottomNavigationItem(
                 selected = selectedDestination.route == destination.route,
                 onClick = { navigateToTopLevelDestination(destination) },

@@ -9,7 +9,7 @@ interface SpApi {
         const val BASE_URL = "https://dummyjson.com/"
     }
 
-    @GET("products/")
+    @GET("products")
     suspend fun getProducts(): ProductListDto
 }
 

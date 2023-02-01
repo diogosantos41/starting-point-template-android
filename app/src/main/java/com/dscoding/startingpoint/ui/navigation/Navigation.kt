@@ -15,8 +15,7 @@ import com.dscoding.startingpoint.ui.welcome.WelcomeScreen
 fun NavGraph(
     startDestination: String = Destination.WelcomeScreen.route,
     navController: NavHostController,
-    navActions: NavActions,
-    showLoading: (Boolean) -> Unit
+    navActions: NavActions
 ) {
 
     NavHost(

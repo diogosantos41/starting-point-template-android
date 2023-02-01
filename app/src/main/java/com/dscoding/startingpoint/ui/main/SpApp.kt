@@ -55,22 +55,7 @@ fun SpApp(viewModel: MainViewModel = hiltViewModel()) {
         Box(modifier = Modifier.padding(paddingValues)) {
             NavGraph(
                 navController = navController,
-                navActions = navActions,
-                showLoading = viewModel::showLoading
-            )
-        }
-    }
-
-    if (state.showLoading) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(DarkerGrey.copy(alpha = slightOpacity)),
-            contentAlignment = Alignment.Center
-        ) {
-            CircularProgressIndicator(
-                modifier = Modifier.size(100.dp),
-                color = MaterialTheme.colorScheme.primary
+                navActions = navActions
             )
         }
     }
