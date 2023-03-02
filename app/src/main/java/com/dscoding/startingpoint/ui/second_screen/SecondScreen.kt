@@ -1,14 +1,12 @@
-package com.dscoding.startingpoint.ui.productlist
+package com.dscoding.startingpoint.ui.second_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,7 +17,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,16 +32,14 @@ import coil.compose.AsyncImage
 import com.dscoding.startingpoint.domain.model.Product
 import com.dscoding.startingpoint.ui.common_components.LoadingIndicator
 import com.dscoding.startingpoint.ui.navigation.NavActions
-import com.dscoding.startingpoint.ui.theme.DarkerGrey
-import com.dscoding.startingpoint.ui.theme.slightOpacity
 import com.dscoding.startingpoint.ui.utils.DevicePreview
 import com.dscoding.startingpoint.ui.utils.navActions
 import com.dscoding.startingpoint.utils.formatToDisplayCurrency
 
 @Composable
-fun ProductListScreen(
+fun SecondScreen(
     navActions: NavActions,
-    viewModel: ProductListViewModel = hiltViewModel()
+    viewModel: SecondScreenViewModel = hiltViewModel()
 
 ) {
     val state = viewModel.uiState.value
@@ -68,7 +63,7 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
             .clickable(onClick = onClick)
             .padding(start = 15.dp, top = 15.dp, end = 15.dp, bottom = 5.dp),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp
+            defaultElevation = 3.dp
         ),
         colors = CardDefaults.cardColors(
             contentColor = MaterialTheme.colorScheme.onBackground,
@@ -83,7 +78,7 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
         ) {
             AsyncImage(
                 modifier = Modifier
-                    .size(120.dp),
+                    .size(80.dp),
                 contentScale = ContentScale.Crop,
                 model = product.thumbnail,
                 contentDescription = "Product Image"
@@ -99,8 +94,6 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
                 Text(text = product.title, fontWeight = FontWeight.ExtraBold)
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(text = formatToDisplayCurrency(product.price, "€"), fontSize = 14.sp)
-                Spacer(modifier = Modifier.height(10.dp))
-                Divider(color = MaterialTheme.colorScheme.primary)
             }
         }
     }
@@ -109,6 +102,6 @@ fun ProductItem(product: Product, onClick: () -> Unit) {
 @DevicePreview
 @Composable
 fun ProductListScreenPreview() {
-    ProductListScreen(rememberNavController().navActions {})
+    SecondScreen(rememberNavController().navActions())
 }
 

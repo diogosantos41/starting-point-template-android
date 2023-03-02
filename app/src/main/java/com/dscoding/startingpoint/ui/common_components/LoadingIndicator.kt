@@ -23,7 +23,7 @@ fun LoadingIndicator(visible: Boolean) {
             contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator(
-                modifier = Modifier.size(100.dp),
+                modifier = Modifier.size(70.dp),
                 color = MaterialTheme.colorScheme.primary
             )
         }

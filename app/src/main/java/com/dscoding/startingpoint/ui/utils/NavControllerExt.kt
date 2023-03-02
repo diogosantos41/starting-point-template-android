@@ -12,6 +12,6 @@ fun NavController.safeNavigate(destinationRoute: String) {
 }
 
 @Composable
-fun NavController.navActions(onBoardingCompleted: () -> Unit): NavActions {
-    return remember(this) { NavActions(this, onBoardingCompleted) }
+fun NavController.navActions(): NavActions {
+    return remember(this) { NavActions(this) }
 }

@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.ui.productlist
+package com.dscoding.startingpoint.ui.second_screen
 
 import androidx.lifecycle.viewModelScope
 import com.dscoding.startingpoint.common.Result
@@ -17,7 +17,7 @@ data class ProductListState(
 )
 
 @HiltViewModel
-class ProductListViewModel @Inject constructor(private val repository: Repository) :
+class SecondScreenViewModel @Inject constructor(private val repository: Repository) :
     BaseViewModel<ProductListState>() {
 
     private var getProductsJob: Job? = null
@@ -53,8 +53,7 @@ class ProductListViewModel @Inject constructor(private val repository: Repositor
                     )
                 )
             }
-        }
-            .launchIn(viewModelScope)
+        }.launchIn(viewModelScope)
     }
 }
 
