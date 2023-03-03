@@ -1,8 +1,8 @@
 package com.dscoding.startingpoint.di
 
 import com.dscoding.startingpoint.data.api.SpApi
-import com.dscoding.startingpoint.data.repository.RepositoryImpl
-import com.dscoding.startingpoint.domain.repository.Repository
+import com.dscoding.startingpoint.data.repository.ApiRepositoryImpl
+import com.dscoding.startingpoint.domain.repository.ApiRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataModule {
+object ApiModule {
 
     @Provides
     @Singleton
@@ -30,7 +30,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideSpRepository(api: SpApi): Repository {
-        return RepositoryImpl(api)
+    fun provideSpRepository(api: SpApi): ApiRepository {
+        return ApiRepositoryImpl(api)
     }
 }

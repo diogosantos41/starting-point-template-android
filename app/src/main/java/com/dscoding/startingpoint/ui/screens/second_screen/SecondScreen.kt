@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.ui.second_screen
+package com.dscoding.startingpoint.ui.screens.second_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

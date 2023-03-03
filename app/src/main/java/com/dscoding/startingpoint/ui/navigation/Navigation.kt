@@ -5,10 +5,10 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.dscoding.startingpoint.ui.second_screen.SecondScreen
+import com.dscoding.startingpoint.ui.screens.second_screen.SecondScreen
 import com.dscoding.startingpoint.ui.utils.FeatureNotImplementedScreen
 import com.dscoding.startingpoint.ui.utils.safeNavigate
-import com.dscoding.startingpoint.ui.first_screen.FirstScreen
+import com.dscoding.startingpoint.ui.screens.first_screen.FirstScreen
 
 
 @Composable

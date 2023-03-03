@@ -1,9 +1,9 @@
-package com.dscoding.startingpoint.ui.second_screen
+package com.dscoding.startingpoint.ui.screens.second_screen
 
 import androidx.lifecycle.viewModelScope
 import com.dscoding.startingpoint.common.Result
 import com.dscoding.startingpoint.domain.model.Product
-import com.dscoding.startingpoint.domain.repository.Repository
+import com.dscoding.startingpoint.domain.repository.ApiRepository
 import com.dscoding.startingpoint.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -17,7 +17,7 @@ data class ProductListState(
 )
 
 @HiltViewModel
-class SecondScreenViewModel @Inject constructor(private val repository: Repository) :
+class SecondScreenViewModel @Inject constructor(private val apiRepository: ApiRepository) :
     BaseViewModel<ProductListState>() {
 
     private var getProductsJob: Job? = null
@@ -35,7 +35,7 @@ class SecondScreenViewModel @Inject constructor(private val repository: Reposito
 
     private fun getProducts() {
         getProductsJob?.cancel()
-        getProductsJob = repository.getProducts().onEach { productResource ->
+        getProductsJob = apiRepository.getProducts().onEach { productResource ->
             when (productResource) {
                 is Result.Loading -> updateState(
                     uiState.value.copy(
