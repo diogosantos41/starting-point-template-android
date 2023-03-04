@@ -3,7 +3,6 @@
 package com.dscoding.startingpoint.ui.main
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
@@ -37,6 +36,7 @@ fun MainApp() {
         TopAppBarUI(
             visible = state.shouldShowTopAppBar,
             title = state.currentDestination?.strResource?.asString() ?: "",
+            showSettingsIcon = state.shouldShowSettingsIcon,
             onSettingsPressed = navActions.goToSettings,
             onBackPressed = navActions.upPress
         )
@@ -54,6 +54,7 @@ fun MainApp() {
 fun TopAppBarUI(
     visible: Boolean,
     title: String,
+    showSettingsIcon: Boolean,
     onSettingsPressed: () -> Unit,
     onBackPressed: () -> Unit
 ) {
@@ -78,12 +79,18 @@ fun TopAppBarUI(
             }
         },
             actions = {
-                IconButton(onClick = onSettingsPressed) {
-                    Icon(
-                        imageVector = Icons.Default.Settings,
-                        contentDescription = "Settings Icon",
-                        tint = White
-                    )
+                AnimatedVisibility(
+                    visible = showSettingsIcon,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    IconButton(onClick = onSettingsPressed) {
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = "Settings Icon",
+                            tint = White
+                        )
+                    }
                 }
             }
         )

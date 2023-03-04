@@ -31,6 +31,9 @@ class MainAppState(private val navController: NavHostController) {
     val shouldShowTopAppBar: Boolean
         @Composable get() = currentNavDestination?.route in topAppBarRoutes
 
+    val shouldShowSettingsIcon: Boolean
+        @Composable get() = currentNavDestination?.route != Destination.SettingsScreen.route
+
     val currentDestination: Destination?
         @Composable get() = currentNavDestination?.route?.toDestination()
 
