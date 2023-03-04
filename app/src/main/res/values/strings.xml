@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">StartingPoint</string>
+    <string name="app_name">Starting Point</string>
+    <string name="second_screen_page_title">Second Screen</string>
+    <string name="third_screen_page_title">Third Screen</string>
+    <string name="settings_screen_page_title">Settings</string>
 </resources>

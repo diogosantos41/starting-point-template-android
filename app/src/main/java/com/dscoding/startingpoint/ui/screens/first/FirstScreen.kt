@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.ui.screens.first_screen
+package com.dscoding.startingpoint.ui.screens.first
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image

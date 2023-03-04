@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.ui.screens.second_screen
+package com.dscoding.startingpoint.ui.screens.second
 
 import androidx.lifecycle.viewModelScope
 import com.dscoding.startingpoint.common.Result
@@ -44,7 +44,8 @@ class SecondScreenViewModel @Inject constructor(private val apiRepository: ApiRe
                 )
                 is Result.Success -> updateState(
                     uiState.value.copy(
-                        products = productResource.data ?: emptyList(), isLoading = false
+                        products = productResource.data ?: emptyList(),
+                        isLoading = false
                     )
                 )
                 is Result.Error -> updateState(

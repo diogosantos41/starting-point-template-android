@@ -2,9 +2,16 @@
 
 package com.dscoding.startingpoint.ui.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -16,47 +23,71 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.dscoding.startingpoint.ui.navigation.NavGraph
 import com.dscoding.startingpoint.ui.utils.navActions
 
 @Composable
-fun MainApp(viewModel: MainUIViewModel = hiltViewModel()) {
-
-    val state = viewModel.uiState.value
+fun MainApp() {
     val navController = rememberNavController()
     val navActions = navController.navActions()
-
+    val state = rememberMainAppState(navController = navController)
 
     Scaffold(topBar = {
-        TopAppBarUI(onBackPressed = navActions.upPress)
+        TopAppBarUI(
+            visible = state.shouldShowTopAppBar,
+            title = state.currentDestination?.strResource?.asString() ?: "",
+            onSettingsPressed = navActions.goToSettings,
+            onBackPressed = navActions.upPress
+        )
     }, content = { paddingValues ->
         Surface(modifier = Modifier.padding(paddingValues)) {
             NavGraph(
                 navController = navController,
-                navActions = navActions
+                navActions = navActions,
             )
         }
     })
 }
 
 @Composable
-fun TopAppBarUI(onBackPressed: () -> Unit) {
-    TopAppBar(title = {
-        Text(
-            text = "Page Title",
-            color = White,
-            style = MaterialTheme.typography.headlineSmall
-        )
-    }, navigationIcon = {
-        IconButton(onClick = onBackPressed) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Go back icon",
-                tint = White
+fun TopAppBarUI(
+    visible: Boolean,
+    title: String,
+    onSettingsPressed: () -> Unit,
+    onBackPressed: () -> Unit
+) {
+    AnimatedVisibility(
+        visible = visible,
+        enter = slideInVertically(),
+        exit = slideOutVertically()
+    ) {
+        TopAppBar(title = {
+            Text(
+                text = title,
+                color = White,
+                style = MaterialTheme.typography.titleMedium
             )
-        }
-    })
+        }, navigationIcon = {
+            IconButton(onClick = onBackPressed) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Go back icon",
+                    tint = White
+                )
+            }
+        },
+            actions = {
+                IconButton(onClick = onSettingsPressed) {
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "Settings Icon",
+                        tint = White
+                    )
+                }
+            }
+        )
+    }
 }
+
 

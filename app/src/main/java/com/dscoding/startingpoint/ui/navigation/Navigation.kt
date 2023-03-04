@@ -5,19 +5,17 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.dscoding.startingpoint.ui.screens.second_screen.SecondScreen
+import com.dscoding.startingpoint.ui.screens.first.FirstScreen
+import com.dscoding.startingpoint.ui.screens.second.SecondScreen
 import com.dscoding.startingpoint.ui.utils.FeatureNotImplementedScreen
 import com.dscoding.startingpoint.ui.utils.safeNavigate
-import com.dscoding.startingpoint.ui.screens.first_screen.FirstScreen
-
 
 @Composable
 fun NavGraph(
-    startDestination: String = Destination.FirstScreen.route,
+    startDestination: String = StartDestination.route,
     navController: NavHostController,
-    navActions: NavActions
+    navActions: NavActions,
 ) {
-
     NavHost(
         navController = navController,
         startDestination = startDestination
@@ -33,13 +31,17 @@ fun NavGraph(
             SecondScreen(navActions)
         }
         composable(
+            route = Destination.ThirdScreen.route,
+        ) {
+            FeatureNotImplementedScreen("Third Screen")
+        }
+        composable(
             route = Destination.SettingsScreen.route,
         ) {
-            FeatureNotImplementedScreen("Components")
+            FeatureNotImplementedScreen("Settings")
         }
     }
 }
-
 
 class NavActions(private val navController: NavController) {
 
@@ -49,6 +51,14 @@ class NavActions(private val navController: NavController) {
 
     val goToSecondScreen: () -> Unit = {
         navController.safeNavigate(Destination.SecondScreen.route)
+    }
+
+    val goToThirdScreen: () -> Unit = {
+        navController.safeNavigate(Destination.ThirdScreen.route)
+    }
+
+    val goToSettings: () -> Unit = {
+        navController.safeNavigate(Destination.SettingsScreen.route)
     }
 
     val goToProductDetail: (String) -> Unit = { productId ->
