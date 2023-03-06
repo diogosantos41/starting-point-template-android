@@ -1,4 +1,4 @@
-package com.dscoding.startingpoint.ui.utils
+package com.dscoding.startingpoint.utils.extensions
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.widthIn

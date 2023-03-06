@@ -26,8 +26,8 @@ import com.dscoding.startingpoint.R
 import com.dscoding.startingpoint.ui.navigation.NavActions
 import com.dscoding.startingpoint.ui.theme.StartingPointTheme
 import com.dscoding.startingpoint.ui.utils.DevicePreview
-import com.dscoding.startingpoint.ui.utils.navActions
-import com.dscoding.startingpoint.ui.utils.supportWideScreen
+import com.dscoding.startingpoint.utils.extensions.navActions
+import com.dscoding.startingpoint.utils.extensions.supportWideScreen
 
 @Composable
 fun FirstScreen(navActions: NavActions) {
@@ -41,13 +41,11 @@ fun FirstScreen(navActions: NavActions) {
             Spacer(
                 modifier = Modifier
                     .weight(1f)
-                    .animateContentSize()
             )
             Branding()
             Spacer(
                 modifier = Modifier
                     .weight(1f)
-                    .animateContentSize()
             )
             Button(
                 onClick = navActions.goToSecondScreen,
@@ -80,7 +78,8 @@ private fun Logo(
 @Composable
 private fun Branding(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.wrapContentHeight(align = Alignment.CenterVertically)
+        modifier = modifier
+            .wrapContentHeight(align = Alignment.CenterVertically)
     ) {
         Logo(
             modifier = Modifier

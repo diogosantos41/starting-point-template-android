@@ -32,7 +32,7 @@ import com.dscoding.startingpoint.domain.model.Product
 import com.dscoding.startingpoint.ui.common_components.LoadingIndicator
 import com.dscoding.startingpoint.ui.navigation.NavActions
 import com.dscoding.startingpoint.ui.utils.DevicePreview
-import com.dscoding.startingpoint.ui.utils.navActions
+import com.dscoding.startingpoint.utils.extensions.navActions
 import com.dscoding.startingpoint.utils.formatToDisplayCurrency
 
 @Composable

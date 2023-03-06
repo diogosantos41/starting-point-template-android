@@ -23,8 +23,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.navigation.compose.rememberNavController
+import com.dscoding.startingpoint.common.Constants.TOP_APP_BAR_SLIDE_IN_ANIMATION_TARGET_OFFSET
 import com.dscoding.startingpoint.ui.navigation.NavGraph
-import com.dscoding.startingpoint.ui.utils.navActions
+import com.dscoding.startingpoint.utils.extensions.navActions
 
 @Composable
 fun MainApp() {
@@ -35,7 +36,7 @@ fun MainApp() {
     Scaffold(topBar = {
         TopAppBarUI(
             visible = state.shouldShowTopAppBar,
-            title = state.currentDestination?.strResource?.asString() ?: "",
+            title = state.currentDestination?.strResource?.asString(),
             showSettingsIcon = state.shouldShowSettingsIcon,
             onSettingsPressed = navActions.goToSettings,
             onBackPressed = navActions.upPress
@@ -53,7 +54,7 @@ fun MainApp() {
 @Composable
 fun TopAppBarUI(
     visible: Boolean,
-    title: String,
+    title: String?,
     showSettingsIcon: Boolean,
     onSettingsPressed: () -> Unit,
     onBackPressed: () -> Unit
@@ -61,11 +62,11 @@ fun TopAppBarUI(
     AnimatedVisibility(
         visible = visible,
         enter = slideInVertically(),
-        exit = slideOutVertically()
+        exit = slideOutVertically(targetOffsetY = { TOP_APP_BAR_SLIDE_IN_ANIMATION_TARGET_OFFSET })
     ) {
         TopAppBar(title = {
             Text(
-                text = title,
+                text = title ?: "",
                 color = White,
                 style = MaterialTheme.typography.titleMedium
             )

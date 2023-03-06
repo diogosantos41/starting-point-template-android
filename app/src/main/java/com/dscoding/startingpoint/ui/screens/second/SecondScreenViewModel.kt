@@ -11,19 +11,19 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-data class ProductListState(
+data class SecondScreenState(
     val products: List<Product>,
     val isLoading: Boolean
 )
 
 @HiltViewModel
 class SecondScreenViewModel @Inject constructor(private val apiRepository: ApiRepository) :
-    BaseViewModel<ProductListState>() {
+    BaseViewModel<SecondScreenState>() {
 
     private var getProductsJob: Job? = null
 
-    override fun initialState(): ProductListState {
-        return ProductListState(
+    override fun initialState(): SecondScreenState {
+        return SecondScreenState(
             products = emptyList(),
             isLoading = true
         )

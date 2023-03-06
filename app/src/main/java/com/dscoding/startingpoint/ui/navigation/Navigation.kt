@@ -7,18 +7,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.dscoding.startingpoint.ui.screens.first.FirstScreen
 import com.dscoding.startingpoint.ui.screens.second.SecondScreen
+import com.dscoding.startingpoint.ui.screens.settings.SettingsScreen
 import com.dscoding.startingpoint.ui.utils.FeatureNotImplementedScreen
-import com.dscoding.startingpoint.ui.utils.safeNavigate
+import com.dscoding.startingpoint.utils.extensions.safeNavigate
 
 @Composable
 fun NavGraph(
-    startDestination: String = StartDestination.route,
     navController: NavHostController,
     navActions: NavActions,
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = StartDestination.route
     ) {
         composable(
             route = Destination.FirstScreen.route,
@@ -38,7 +38,7 @@ fun NavGraph(
         composable(
             route = Destination.SettingsScreen.route,
         ) {
-            FeatureNotImplementedScreen("Settings")
+            SettingsScreen()
         }
     }
 }
