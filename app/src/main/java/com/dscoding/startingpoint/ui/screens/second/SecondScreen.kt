@@ -49,7 +49,7 @@ fun SecondScreen(
             .background(color = MaterialTheme.colorScheme.background)
     ) {
         items(state.products) { product ->
-            ProductItem(product = product, onClick = { })
+            ProductItem(product = product, onClick = { navActions.goToThirdScreen() })
         }
     }
     LoadingIndicator(visible = state.isLoading)

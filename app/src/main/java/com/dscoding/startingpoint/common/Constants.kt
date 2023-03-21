@@ -1,7 +1,7 @@
 package com.dscoding.startingpoint.common
 
 object Constants {
-    const val ITEM_DATABASE_NAME = "item_db"
+    const val CONTACT_DATABASE_NAME = "item_db"
     const val TOP_APP_BAR_SLIDE_IN_ANIMATION_TARGET_OFFSET = -200
 
 

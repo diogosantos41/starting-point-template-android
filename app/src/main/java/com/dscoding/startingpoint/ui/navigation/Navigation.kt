@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.dscoding.startingpoint.ui.screens.first.FirstScreen
 import com.dscoding.startingpoint.ui.screens.second.SecondScreen
 import com.dscoding.startingpoint.ui.screens.settings.SettingsScreen
+import com.dscoding.startingpoint.ui.screens.third.ThirdScreen
 import com.dscoding.startingpoint.ui.utils.FeatureNotImplementedScreen
 import com.dscoding.startingpoint.utils.extensions.safeNavigate
 
@@ -33,7 +34,7 @@ fun NavGraph(
         composable(
             route = Destination.ThirdScreen.route,
         ) {
-            FeatureNotImplementedScreen("Third Screen")
+            ThirdScreen(navActions)
         }
         composable(
             route = Destination.SettingsScreen.route,

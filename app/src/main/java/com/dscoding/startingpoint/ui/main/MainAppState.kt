@@ -21,6 +21,7 @@ class MainAppState(private val navController: NavHostController) {
 
     private val topAppBarRoutes = listOf(
         Destination.SecondScreen.route,
+        Destination.ThirdScreen.route,
         Destination.SettingsScreen.route
     )
 

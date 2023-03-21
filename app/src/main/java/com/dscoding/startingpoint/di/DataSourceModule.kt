@@ -3,7 +3,7 @@ package com.dscoding.startingpoint.di
 import android.app.Application
 import androidx.room.Room
 import com.dscoding.startingpoint.common.Constants
-import com.dscoding.startingpoint.data.data_source.ItemDatabase
+import com.dscoding.startingpoint.data.data_source.ContactDatabase
 import com.dscoding.startingpoint.data.repository.DbRepositoryImpl
 import com.dscoding.startingpoint.domain.repository.DbRepository
 import dagger.Module
@@ -18,14 +18,14 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideItemDatabase(app: Application): ItemDatabase {
-        return Room.databaseBuilder(app, ItemDatabase::class.java, Constants.ITEM_DATABASE_NAME)
+    fun provideContactDatabase(app: Application): ContactDatabase {
+        return Room.databaseBuilder(app, ContactDatabase::class.java, Constants.CONTACT_DATABASE_NAME)
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideNoteRepository(db: ItemDatabase): DbRepository {
-        return DbRepositoryImpl(db.itemDao)
+    fun provideContactRepository(db: ContactDatabase): DbRepository {
+        return DbRepositoryImpl(db.contactDao)
     }
 }

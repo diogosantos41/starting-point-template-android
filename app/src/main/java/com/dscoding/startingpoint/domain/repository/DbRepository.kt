@@ -1,15 +1,17 @@
 package com.dscoding.startingpoint.domain.repository
 
-import com.dscoding.startingpoint.domain.model.SomeItem
+import com.dscoding.startingpoint.domain.model.Contact
 import kotlinx.coroutines.flow.Flow
 
 interface DbRepository {
 
-    fun getItems(): Flow<List<SomeItem>>
+    fun getContactsOrderedByFirstName(): Flow<List<Contact>>
 
-    suspend fun getItemById(id: Int): SomeItem?
+    fun getContactsOrderedByLastName(): Flow<List<Contact>>
 
-    suspend fun insertItem(item: SomeItem)
+    fun getContactsOrderedByPhoneNumber(): Flow<List<Contact>>
 
-    suspend fun deleteItem(item: SomeItem)
+    suspend fun upsertContact(contact: Contact)
+
+    suspend fun deleteContact(contact: Contact)
 }

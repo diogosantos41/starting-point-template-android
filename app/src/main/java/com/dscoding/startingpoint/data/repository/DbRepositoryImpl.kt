@@ -1,26 +1,31 @@
 package com.dscoding.startingpoint.data.repository
 
-import com.dscoding.startingpoint.data.data_source.ItemDao
-import com.dscoding.startingpoint.domain.model.SomeItem
+import com.dscoding.startingpoint.data.data_source.ContactDao
+import com.dscoding.startingpoint.domain.model.Contact
 import com.dscoding.startingpoint.domain.repository.DbRepository
 import kotlinx.coroutines.flow.Flow
 
 class DbRepositoryImpl(
-    private val dao: ItemDao
+    private val dao: ContactDao
 ) : DbRepository {
-    override fun getItems(): Flow<List<SomeItem>> {
-        return dao.getItems()
+    override fun getContactsOrderedByFirstName(): Flow<List<Contact>> {
+        return dao.getContactsOrderedByFirstName()
     }
 
-    override suspend fun getItemById(id: Int): SomeItem? {
-        return dao.getItemById(id)
+    override fun getContactsOrderedByLastName(): Flow<List<Contact>> {
+        return dao.getContactsOrderedByLastName()
     }
 
-    override suspend fun insertItem(item: SomeItem) {
-        return dao.insertItem(item)
+    override fun getContactsOrderedByPhoneNumber(): Flow<List<Contact>> {
+        return dao.getContactsOrderedByPhoneNumber()
     }
 
-    override suspend fun deleteItem(item: SomeItem) {
-        return dao.deleteItem(item)
+    override suspend fun upsertContact(contact: Contact) {
+        dao.upsertContact(contact)
     }
+
+    override suspend fun deleteContact(contact: Contact) {
+        dao.deleteContact(contact)
+    }
+
 }
