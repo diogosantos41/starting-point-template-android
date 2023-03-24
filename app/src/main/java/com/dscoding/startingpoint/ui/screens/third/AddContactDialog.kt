@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,10 +23,16 @@ fun AddContactDialog(
 ) {
     AlertDialog(
         modifier = modifier,
+        backgroundColor = MaterialTheme.colorScheme.background,
         onDismissRequest = {
             onEvent(ThirdScreenEvent.HideDialog)
         },
-        title = { Text(text = "Add contact") },
+        title = {
+            Text(
+                text = "Add contact",
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        },
         text = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -35,7 +43,10 @@ fun AddContactDialog(
                         onEvent(ThirdScreenEvent.SetFirstName(it))
                     },
                     placeholder = {
-                        Text(text = "First name")
+                        Text(
+                            text = "First name",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                 )
                 TextField(
@@ -44,7 +55,10 @@ fun AddContactDialog(
                         onEvent(ThirdScreenEvent.SetLastName(it))
                     },
                     placeholder = {
-                        Text(text = "Last name")
+                        Text(
+                            text = "Last name",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                 )
                 TextField(
@@ -53,7 +67,10 @@ fun AddContactDialog(
                         onEvent(ThirdScreenEvent.SetPhoneNumber(it))
                     },
                     placeholder = {
-                        Text(text = "Phone number")
+                        Text(
+                            text = "Phone number",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                 )
             }
@@ -61,9 +78,11 @@ fun AddContactDialog(
         buttons = {
             Box(
                 modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.CenterEnd
+                contentAlignment = Alignment.Center
             ) {
-                Button(onClick = {
+                Button(
+                    colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colorScheme.primary),
+                    onClick = {
                     onEvent(ThirdScreenEvent.SaveContact)
                 }) {
                     Text(text = "Save")

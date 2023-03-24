@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.navigation.compose.rememberNavController
 import com.dscoding.startingpoint.common.Constants.TOP_APP_BAR_SLIDE_IN_ANIMATION_TARGET_OFFSET
@@ -67,7 +68,7 @@ fun TopAppBarUI(
         TopAppBar(title = {
             Text(
                 text = title ?: "",
-                color = White,
+                color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium
             )
         }, navigationIcon = {
@@ -75,7 +76,7 @@ fun TopAppBarUI(
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Go back icon",
-                    tint = White
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
         },
@@ -89,7 +90,7 @@ fun TopAppBarUI(
                         Icon(
                             imageVector = Icons.Default.Settings,
                             contentDescription = "Settings Icon",
-                            tint = White
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 }
